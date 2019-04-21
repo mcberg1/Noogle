@@ -14,17 +14,33 @@
   <h1>Noogle Search</h1>
   
   <input id="Input"></input>
-  <button onClick="myfunction">Shit</button>
+  <button onClick="myFunction">Search</button>
   <br>
-  <p>Sorry, your seach couldn't be found.</p>
+  <p id="demo">Sorry, your seach couldn't be found.</p>
 
+  <br>
+  
 </body>
 <script>
   function myFunction(){
     
-   console.log("FUCK"); 
+   var request = new XMLHttpRequest()
+
+// Open a new connection, using the GET request on the URL endpoint
+request.open('GET', 'https://ghibliapi.herokuapp.com/films', true)
+
+request.onload = function () {
+  document.getElementById("demo").innerHTML = this.responseText;
   }
+}
+
+// Send request
+request.send()
   
+  
+  }
+
+
   
   
   
