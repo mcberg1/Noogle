@@ -14,7 +14,7 @@
   <h1>Noogle Search</h1>
   
   <input id="Input"></input>
-  <button onClick="myFunction">Search</button>
+  <button onClick="myFunction()">Search</button>
   <br>
   <p id="demo">Sorry, your seach couldn't be found.</p>
 
@@ -32,7 +32,7 @@ request.open('GET', 'https://ghibliapi.herokuapp.com/films', true)
 request.onload = function () {
   document.getElementById("demo").innerHTML = this.responseText;
   }
-}
+
 
 // Send request
 request.send()
