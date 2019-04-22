@@ -30,6 +30,8 @@
 request.open('GET', 'https://en.wikipedia.org/w/api.php?action=query&format=xml&prop=&list=search&exportnowrap=1&continue=-%7C%7C&titles=50&srsearch=xilent&srlimit=1&sroffset=9&srwhat=text&srinfo=totalhits&srprop=wordcount%7Csnippet&srenablerewrites=1&srsort=incoming_links_asc', true);
 request.setRequestHeader('X-PINGOTHER', 'pingpong');
 request.setRequestHeader('Content-Type',  'application/xml');
+request.setRequestHeader("Access-Control-Allow-Origin", "*");
+
   request.onload = function () {
   document.getElementById("demo").innerHTML = this.responseText;
   }
