@@ -25,24 +25,17 @@
   function myFunction(){
     
    var request = new XMLHttpRequest()
-
 // Open a new connection, using the GET request on the URL endpoint
 request.open('GET', 'https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&prop=&list=search&titles=50&utf8=1&srsearch=dead&srlimit=1&srwhat=text&srinfo=totalhits&srprop=wordcount%7Csnippet&srenablerewrites=1&srsort=incoming_links_asc', true);
-
   request.onload = function () {
     let obj = JSON.parse(this.responseText);
-  document.getElementById("demo").innerHTML = obj.query.search.0.snippet;
-    console.log(obj);
+  document.getElementById("demo").innerHTML = obj.search;
   }
-
-
 // Send request
 request.send()
   
   
   }
-
-
   
   
   
