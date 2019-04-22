@@ -30,6 +30,7 @@ request.open('GET', 'https://en.wikipedia.org/w/api.php?action=query&format=json
   request.onload = function () {
     let obj = JSON.parse(this.responseText);
   document.getElementById("demo").innerHTML = obj.query.search.snippet;
+    console.log(obj);
   }
 // Send request
 request.send()
