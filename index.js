@@ -1,6 +1,6 @@
 function onload(){
-    document.body.style.backgroundColor = randomColor();
-    document.body.style.color = randomColor();
+    // document.body.style.backgroundColor = randomColor();
+    // document.body.style.color = randomColor();
 }
 
 function randomColor(){
