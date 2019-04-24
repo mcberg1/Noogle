@@ -16,6 +16,8 @@
   <input id="Input"></input>
   <button onClick="myFunction()">Search</button>
   <br>
+  <h5 id="Title"></h5> 
+  
   <p id="demo">Sorry, your seach couldn't be found.</p>
 
   <br>
@@ -30,6 +32,7 @@ request.open('GET', 'https://en.wikipedia.org/w/api.php?action=query&format=json
   request.onload = function () {
     let obj = JSON.parse(this.responseText);
   document.getElementById("demo").innerHTML = obj.query.search[0].snippet;
+    document.getElementById("Title").innerHTML = obj.query.search[0].title;
     console.log(obj);
   }
 // Send request
