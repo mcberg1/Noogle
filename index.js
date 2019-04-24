@@ -1,6 +1,18 @@
-function onload(){
-    // document.body.style.backgroundColor = randomColor();
-    // document.body.style.color = randomColor();
+window.onload = function () {
+    document.body.style.backgroundColor = randomColor();
+    document.body.style.color = randomColor();
+    var params = getUrlVars();
+    if(params['q']!=null){
+        search(params['q']);
+        document.getElementById("input").value = params['q'];
+    }
+}
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
 }
 
 function randomColor(){
