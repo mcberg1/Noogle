@@ -1,52 +1,24 @@
 <html>
-
-
 <head>
-
 <title>Noogle Search</title>
-
-
-
+  <link href="https://fonts.googleapis.com/css?family=ZCOOL+KuaiLe" rel="stylesheet">
+  <script src="index.js"></script>
+  <style>
+    body{
+      font-family: 'ZCOOL KuaiLe', cursive;
+    }
+  </style>
 </head>
-
-
 <body>
-  <h1>Noogle Search</h1>
-  
-  <input id="Input"  onkeyup="myFunction()"></input>
-  <button onClick="myFunction()">Search</button>
-  <br>
-  <h3 id="Title"></h3> 
-  
-  <p id="demo">Sorry, your seach couldn't be found.</p>
+  <script>
+    onload();
+  </script>
+  <h1><strong>Noogle Search</strong></h1>
 
+  <input id="input"  onkeyup="search(this.value)">
+  <button onClick="search(document.getElementById('input').value)">Search</button>
   <br>
-  
+  <h3 id="title"></h3>
+  <p id="snippet">No search term provided</p>
 </body>
-<script>
-  function myFunction(){
-    
-   var request = new XMLHttpRequest()
-// Open a new connection, using the GET request on the URL endpoint
-request.open('GET', 'https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&prop=&list=search&titles=50&utf8=1&srsearch='+encodeURI(document.getElementById("Input").value)+'&srlimit=1&srwhat=text&srinfo=totalhits&srprop=wordcount%7Csnippet&srenablerewrites=1&srsort=incoming_links_asc', true);
-  request.onload = function () {
-    let obj = JSON.parse(this.responseText);
-  document.getElementById("demo").innerHTML = obj.query.search[0].snippet;
-    document.getElementById("Title").innerHTML = obj.query.search[0].title;
-    console.log(obj);
-  }
-// Send request
-request.send()
- 
-  
-  
-  }
-  
-  
-  
-  
-  
-</script>
-
-
 </html>
