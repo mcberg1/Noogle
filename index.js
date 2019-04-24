@@ -1,6 +1,8 @@
 window.onload = function () {
-    document.body.style.backgroundColor = randomColor();
-    document.body.style.color = randomColor();
+    let root = document.documentElement;
+    root.style.setProperty("--background-color",randomColor());
+    root.style.setProperty("--color",randomColor());
+    // document.body.style.color = randomColor();
     var params = getUrlVars();
     if(params['q']!=null){
         search(params['q']);
@@ -27,19 +29,28 @@ function randomColor(){
 
 function search(value){
     var request = new XMLHttpRequest();
-    if(value==""){
-        document.getElementById("title").innerHTML="";
-        document.getElementById("snippet").innerHTML="";
-    }
     // Open a new connection, using the GET request on the URL endpoint
-    request.open('GET', 'https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&prop=&list=search&titles=50&utf8=1&srsearch='+encodeURI(value)+'&srlimit=1&srwhat=text&srinfo=totalhits&srprop=wordcount%7Csnippet&srenablerewrites=1&srsort=incoming_links_asc', true);
+    request.open('GET', 'https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&prop=&list=search&titles=50&utf8=1&srsearch='+encodeURI(value)+'&srlimit=10&srwhat=text&srinfo=totalhits&srprop=wordcount%7Csnippet&srenablerewrites=1&srsort=incoming_links_asc', true);
     request.onload = function () {
         let obj = JSON.parse(this.responseText);
-        console.log(obj.query.search);
-        document.getElementById("snippet").innerHTML = obj.query.search[0].snippet;
-        document.getElementById("title").innerHTML = obj.query.search[0].title;
-        console.log(obj.query);
+        var div = document.getElementById("results");
+        div.innerHTML = "";
+        var j = 5;
+        if(obj.query.search.length<5){j=obj.query.search.length}
+        for(var i=0; i<j; i++){
+            div.innerHTML+="<h3>"+obj.query.search[i].title+"</h3>"
+            div.innerHTML+="<p onclick='getArticle(this,"+obj.query.search[i].pageid+")'>"+obj.query.search[i].snippet+"</p>"
+        }
     }
-    // Send request
+    request.send()
+}
+
+function getArticle(th,id){
+    var request = new XMLHttpRequest();
+    request.open('GET', 'https://en.wikipedia.org/w/api.php?action=parse&origin=*&prop=text&pageid='+id+'&format=json', true);
+    request.onload = function () {
+        let obj = JSON.parse(this.responseText);
+        th.innerHTML = obj['parse']['text']['*'];
+    }
     request.send()
 }

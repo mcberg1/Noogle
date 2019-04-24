@@ -4,8 +4,17 @@
   <link href="https://fonts.googleapis.com/css?family=ZCOOL+KuaiLe" rel="stylesheet">
   <script src="index.js"></script>
   <style>
+    element {
+      --background-color: #FFFFFF;
+      --color: #000000;
+    }
     body{
       font-family: 'ZCOOL KuaiLe', cursive;
+      background-color: var(--background-color);
+      color: var(--color);
+    }
+    a{
+      color: var(--color);
     }
   </style>
 </head>
@@ -15,7 +24,8 @@
   <input id="input"  onkeyup="search(this.value)">
   <button onClick="search(document.getElementById('input').value)">Search</button>
   <br>
-  <h3 id="title"></h3>
-  <p id="snippet">No search term provided</p>
+  <div id="results">
+
+  </div>
 </body>
 </html>
