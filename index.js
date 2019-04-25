@@ -46,11 +46,11 @@ function search(value){
 }
 
 function getArticle(th,id){
-    var request = new XMLHttpRequest();
-    request.open('GET', 'https://en.wikipedia.org/w/api.php?action=parse&origin=*&prop=text&pageid='+id+'&format=json', true);
-    request.onload = function () {
-        let obj = JSON.parse(this.responseText);
-        th.innerHTML = obj['parse']['text']['*'];
-    }
-    request.send()
+    // var request = new XMLHttpRequest();
+    // request.open('GET', 'https://en.wikipedia.org/w/api.php?action=parse&origin=*&prop=text&pageid='+id+'&format=json', true);
+    // request.onload = function () {
+    //     let obj = JSON.parse(this.responseText);
+    //     th.innerHTML = obj['parse']['text']['*'];
+    // }
+    // request.send()
 }
