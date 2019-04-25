@@ -39,18 +39,18 @@ function search(value){
         if(obj.query.search.length<5){j=obj.query.search.length}
         for(var i=0; i<j; i++){
             div.innerHTML+="<h3>"+obj.query.search[i].title+"</h3>"
-            div.innerHTML+="<p onclick='getArticle(this,"+obj.query.search[i].pageid+")'>"+obj.query.search[i].snippet+"</p>"
+            div.innerHTML+="<p ondblclick='getArticle(this,"+obj.query.search[i].pageid+")'>"+obj.query.search[i].snippet+"</p>"
         }
     }
     request.send()
 }
 
 function getArticle(th,id){
-    // var request = new XMLHttpRequest();
-    // request.open('GET', 'https://en.wikipedia.org/w/api.php?action=parse&origin=*&prop=text&pageid='+id+'&format=json', true);
-    // request.onload = function () {
-    //     let obj = JSON.parse(this.responseText);
-    //     th.innerHTML = obj['parse']['text']['*'];
-    // }
-    // request.send()
+    var request = new XMLHttpRequest();
+    request.open('GET', 'https://en.wikipedia.org/w/api.php?action=parse&origin=*&prop=text&pageid='+id+'&format=json', true);
+    request.onload = function () {
+        let obj = JSON.parse(this.responseText);
+        th.innerHTML = obj['parse']['text']['*'];
+    }
+    request.send()
 }

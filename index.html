@@ -2,7 +2,7 @@
 <head>
 <title>Noogle</title>
   <link href="https://fonts.googleapis.com/css?family=ZCOOL+KuaiLe" rel="stylesheet">
-  <link rel="icon" href="favicon.ico">
+  <link rel="icon" href="favicon.png">
   <script src="index.js"></script>
   <style>
     element {
@@ -24,9 +24,13 @@
 </head>
 <body>
   <!--<h1><strong>Noogle Search</strong></h1>-->
-  <img src="ThiccNoogleIcon.png" style="height: 200px;"><br>
-  <input id="input"  onkeyup="search(this.value)">
-  <button onClick="search(document.getElementById('input').value)">Search</button>
+  <img src="ThiccNoogleIcon.png" style="max-height: 200px;width: 100%;max-width: 446px;"><br>
+  <input id="input"  onkeyup="search(this.value)" style="
+    width: calc(100% - 144px);
+    height: 50px;
+    font-size: 40px;
+">
+  <button onClick="search(document.getElementById('input').value)" style="font-size:40px">Search</button>
   <br>
   <div id="results">
 
