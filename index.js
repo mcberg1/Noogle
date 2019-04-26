@@ -12,6 +12,20 @@ window.onload = function () {
         search(params['q'],parseInt(params['n']));
     }
 }
+
+var timer = setInterval(barrelRoll, 10);
+
+function barrelRoll(){
+ if(document.getElementById("input").value == "do a barrel roll"){
+         let root = document.documentElement;
+    root.style.setProperty("--background-color",randomColor());
+    root.style.setProperty("--color",randomColor());
+     
+ }
+    
+}
+
+
 function getUrlVars() {
     var vars = {};
     var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
@@ -34,15 +48,8 @@ function search(value, num){
     if(value == "google"){
      window.location.replace("https://www.bing.com/");
     }
-    else{
-        if(value == "do a barrel roll"){
-            while(true){
-              let root = document.documentElement;
-    root.style.setProperty("--background-color",randomColor());
-    root.style.setProperty("--color",randomColor());
-            }
-            
-        }
+    else{    
+        
     var request = new XMLHttpRequest();
     // Open a new connection, using the GET request on the URL endpoint
     request.open('GET', 'https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&prop=&list=search&titles=50&utf8=1&srsearch='+encodeURI(value)+'&srlimit=10&srwhat=text&srinfo=totalhits&srprop=wordcount%7Csnippet&srenablerewrites=1&srsort=incoming_links_asc', true);
