@@ -1,4 +1,4 @@
-window.onload = function () {
+window.onload = function () { 
     let root = document.documentElement;
     root.style.setProperty("--background-color",randomColor());
     root.style.setProperty("--color",randomColor());
