@@ -8,7 +8,7 @@ window.onload = function () {
     var params = getUrlVars();
     if(params['q']!=null){
         search(decodeURI(params['q']),5);
-        document.getElementById("input").value = params['q'];
+        document.getElementById("input").value = decodeURI(params['q']);
     }
     if(params['n']!=null && params['q']!=null){
         search(decodeURI(params['q']),parseInt(params['n']));
