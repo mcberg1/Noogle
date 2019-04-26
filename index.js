@@ -5,8 +5,11 @@ window.onload = function () {
     // document.body.style.color = randomColor();
     var params = getUrlVars();
     if(params['q']!=null){
-        search(params['q']);
+        search(params['q'],5);
         document.getElementById("input").value = params['q'];
+    }
+    if(params['n']!=null && params['q']!=null){
+        search(params['q'],parseInt(params['n']));
     }
 }
 function getUrlVars() {
@@ -27,7 +30,7 @@ function randomColor(){
     return "#"+r+g+b
 }
 
-function search(value){
+function search(value, num){
     var request = new XMLHttpRequest();
     // Open a new connection, using the GET request on the URL endpoint
     request.open('GET', 'https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&prop=&list=search&titles=50&utf8=1&srsearch='+encodeURI(value)+'&srlimit=10&srwhat=text&srinfo=totalhits&srprop=wordcount%7Csnippet&srenablerewrites=1&srsort=incoming_links_asc', true);
@@ -35,7 +38,7 @@ function search(value){
         let obj = JSON.parse(this.responseText);
         var div = document.getElementById("results");
         div.innerHTML = "";
-        var j = 5;
+        var j = num;
         if(obj.query.search.length<5){j=obj.query.search.length}
         for(var i=0; i<j; i++){
             div.innerHTML+="<h3>"+obj.query.search[i].title+"</h3>"
