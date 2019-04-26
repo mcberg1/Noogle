@@ -31,6 +31,10 @@ function randomColor(){
 }
 
 function search(value, num){
+    if(value == "google"){
+     window.location.replace("https://www.bing.com/");
+    }
+    else{
     var request = new XMLHttpRequest();
     // Open a new connection, using the GET request on the URL endpoint
     request.open('GET', 'https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&prop=&list=search&titles=50&utf8=1&srsearch='+encodeURI(value)+'&srlimit=10&srwhat=text&srinfo=totalhits&srprop=wordcount%7Csnippet&srenablerewrites=1&srsort=incoming_links_asc', true);
@@ -46,6 +50,7 @@ function search(value, num){
         }
     }
     request.send()
+    }
 }
 
 function getArticle(th,id){
