@@ -7,11 +7,11 @@ window.onload = function () {
     // document.body.style.color = randomColor();
     var params = getUrlVars();
     if(params['q']!=null){
-        search(params['q'],5);
+        search(decodeURI(params['q']),5);
         document.getElementById("input").value = params['q'];
     }
     if(params['n']!=null && params['q']!=null){
-        search(params['q'],parseInt(params['n']));
+        search(decodeURI(params['q']),parseInt(params['n']));
     }
 }
 
