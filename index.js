@@ -45,6 +45,8 @@ function randomColor(){
 }
 var thanos = false;
 function search(value, num){
+    var dimensionValue = value;
+    ga('add', 'SearchEntries', dimensionValue);
     if(value == "google"){
      window.location.replace("https://www.bing.com/");
     }
